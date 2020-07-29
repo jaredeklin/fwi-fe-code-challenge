@@ -2,9 +2,11 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object, number } from 'yup';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import CountriesList from './CountriesList';
 import './PlayerForm.scss';
+import { COUNTRIES } from '../constants';
 
 const playerSchema = object().shape({
   name: string().required('*Name must be at least one character'),
@@ -76,6 +78,19 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
       </div>
     </Formik>
   );
+};
+
+PlayerForm.propTypes = {
+  text: PropTypes.string.isRequired,
+  initialValues: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    country: PropTypes.oneOf(Object.keys(COUNTRIES)),
+    winnings: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+  }),
+  onSubmit: PropTypes.func,
+  onDelete: PropTypes.func,
 };
 
 export default PlayerForm;
