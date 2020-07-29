@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './Header/Header';
 import PlayerTable from './PlayerTable/PlayerTable';
-import PlayerAdd from './PlayerAdd/PlayerAdd';
+import PlayerForm from './PlayerForm/PlayerForm';
 
 const App = () => {
   return (
@@ -11,11 +11,12 @@ const App = () => {
       <Header />
       <Switch>
         <Route exact path="/add-player">
-          <PlayerAdd />
+          <PlayerForm text={'Create new player:'} />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <PlayerTable />
         </Route>
+        <Redirect to="/" />
       </Switch>
     </>
   );
