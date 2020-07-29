@@ -1,0 +1,31 @@
+@import 'variables';
+
+.player-form-container {
+  position: relative;
+  top: 3.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.player-form {
+  display: flex;
+  flex-direction: column;
+
+  &__error {
+    margin-bottom: 1rem;
+    color: red;
+  }
+
+  &__input {
+    margin: 0.5rem 0 1rem 0;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    margin-left: 0.5rem;
+  }
+}

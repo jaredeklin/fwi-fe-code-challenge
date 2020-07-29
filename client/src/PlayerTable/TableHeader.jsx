@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TableHeader = () => (
   <table
@@ -8,7 +9,9 @@ const TableHeader = () => (
   >
     <thead>
       <tr role="row">
-        <th role="columnheader" className="table__header table__avatar" />
+        <th role="columnheader" className="table__header table__avatar">
+          <Link to="add-player">+</Link>
+        </th>
         <th role="columnheader" className="table__header table__player">
           Player
         </th>
