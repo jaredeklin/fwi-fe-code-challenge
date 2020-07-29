@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage, useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { string, object, number } from 'yup';
 import { useHistory } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import './PlayerForm.scss';
 const playerSchema = object().shape({
   name: string().required('*Name must be at least one character'),
   country: string().required('*Must select a Country'),
-  winnings: number(),
+  winnings: number().required('*Must be a number'),
   imageUrl: string(),
 });
 
@@ -20,30 +20,14 @@ const defaultState = {
   imageUrl: '',
 };
 
-const PlayerForm = ({ text, initialValues }) => {
+const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
   const { push } = useHistory();
-
-  const handleSubmit = async (values) => {
-    try {
-      const response = await fetch('http://localhost:3001/players', {
-        method: 'POST',
-        body: JSON.stringify(values),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      await response.json();
-      push('/');
-    } catch (error) {
-      console.error('POST ERROR:', error);
-    }
-  };
 
   return (
     <Formik
       initialValues={initialValues || defaultState}
       validationSchema={playerSchema}
-      onSubmit={(values) => handleSubmit(values)}
+      onSubmit={(values) => onSubmit(values)}
     >
       <div className="player-form-container">
         <Form className="player-form">
@@ -66,12 +50,26 @@ const PlayerForm = ({ text, initialValues }) => {
           />
           <label htmlFor="winnings">Winnings:</label>
           <Field className="player-form__input" type="number" name="winnings" />
+          <ErrorMessage
+            name="winnings"
+            component="span"
+            className="player-form__error"
+          />
           <label htmlFor="imageUrl">Image Url:</label>
           <Field className="player-form__input" type="text" name="imageUrl" />
           <div className="player-form__buttons">
             <button type="button" onClick={() => push('/')}>
               Cancel
             </button>
+            {onDelete && (
+              <button
+                type="button"
+                className="player-form__button"
+                onClick={() => onDelete(initialValues.id)}
+              >
+                Delete
+              </button>
+            )}
             <button className="player-form__button">Submit</button>
           </div>
         </Form>

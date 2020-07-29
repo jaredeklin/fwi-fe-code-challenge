@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Flags from 'react-world-flags';
+import { useHistory } from 'react-router-dom';
 
 import Avatar from '../Avatar';
 import { COUNTRIES } from '../constants';
 
 const TableBody = ({ players }) => {
+  const { push } = useHistory();
+
   return (
     <table
       id="player-table-body"
@@ -14,7 +17,14 @@ const TableBody = ({ players }) => {
     >
       <tbody>
         {players.map(({ id, name, country, winnings, imageUrl }) => (
-          <tr key={id} role="row" className="table__row">
+          <tr
+            key={id}
+            role="row"
+            className="table__row"
+            onClick={() =>
+              push('player', { id, name, country, winnings, imageUrl })
+            }
+          >
             <td role="gridcell" className="table__avatar">
               <Avatar src={imageUrl} />
             </td>
