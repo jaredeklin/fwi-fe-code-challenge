@@ -72,7 +72,9 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
                 Delete
               </button>
             )}
-            <button className="player-form__button">Submit</button>
+            <button type="submit" className="player-form__button">
+              Submit
+            </button>
           </div>
         </Form>
       </div>
