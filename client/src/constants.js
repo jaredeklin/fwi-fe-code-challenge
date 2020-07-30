@@ -1,3 +1,6 @@
+export const ASC = 'asc';
+export const DESC = 'desc';
+
 export const COUNTRIES = {
   BD: 'Bangladesh',
   BE: 'Belgium',
