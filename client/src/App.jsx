@@ -5,10 +5,12 @@ import Header from './Header/Header';
 import PlayerTable from './PlayerTable/PlayerTable';
 import PlayerForm from './PlayerForm/PlayerForm';
 import { usePlayerFormActions } from './PlayerForm/usePlayerFormActions';
+import { useTableSort } from './PlayerTable/useTableSort';
 
 const App = () => {
   const { state } = useLocation();
   const { handleCreate, handleUpdate, handleDelete } = usePlayerFormActions();
+  const sort = useTableSort();
 
   return (
     <>
@@ -26,7 +28,7 @@ const App = () => {
           />
         </Route>
         <Route exact path="/">
-          <PlayerTable />
+          <PlayerTable {...sort} />
         </Route>
         <Redirect to="/" />
       </Switch>
