@@ -8,7 +8,7 @@ const NAME = 'name';
 const WINNINGS = 'winnings';
 const COUNTRY = 'country';
 
-const displayArrow = ({ sortBy, sortOrder }, column) => {
+export const displayArrow = ({ sortBy, sortOrder }, column) => {
   if (column !== sortBy) return;
 
   return sortOrder === DESC
@@ -25,7 +25,9 @@ const TableHeader = ({ changeSort, ...sort }) => (
     <thead>
       <tr role="row">
         <th role="columnheader" className="table__header table__avatar">
-          <Link to="add-player">+</Link>
+          <Link to="add-player" data-testid="player-add-button">
+            +
+          </Link>
         </th>
         <th
           role="columnheader"
