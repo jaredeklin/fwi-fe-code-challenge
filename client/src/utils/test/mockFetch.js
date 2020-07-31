@@ -1,10 +1,12 @@
 import playerData from './players';
+import { DEFAULT_QUERY_SIZE } from '../../constants';
 
-async function mockFetch(uri, config) {
-  const url = uri.toString();
+const BASE_URL = 'http://localhost:3001/players';
+const PLAYER_ID = '70629df2-571a-4899-b36a-8f36c909508a';
 
+async function mockFetch(url, config) {
   switch (url) {
-    case 'http://localhost:3001/players?sortBy=&sortOrder=': {
+    case `${BASE_URL}?sortBy=&sortOrder=&size=${DEFAULT_QUERY_SIZE}&from=0`: {
       const players = Object.values(playerData);
       return {
         ok: true,
@@ -12,14 +14,13 @@ async function mockFetch(uri, config) {
         json: async () => ({ total: players.length, players }),
       };
     }
-    case 'http://localhost:3001/players': {
+    case BASE_URL: {
       const player = {
-        id: '70629df2-571a-4899-b36a-8f36c909508a',
+        id: PLAYER_ID,
         name: 'Bob Bobbity',
         country: 'US',
         winnings: 93024,
-        imageUrl:
-          'https://i.pravatar.cc/40?u=70629df2-571a-4899-b36a-8f36c909508a',
+        imageUrl: `https://i.pravatar.cc/40?u=${PLAYER_ID}`,
       };
 
       if (config.method === 'POST') {
@@ -32,14 +33,13 @@ async function mockFetch(uri, config) {
 
       return;
     }
-    case 'http://localhost:3001/players/70629df2-571a-4899-b36a-8f36c909508a': {
+    case `${BASE_URL}/${PLAYER_ID}`: {
       const player = {
-        id: '70629df2-571a-4899-b36a-8f36c909508a',
+        id: PLAYER_ID,
         name: 'Bobby Bobbity',
         country: 'US',
         winnings: 93024,
-        imageUrl:
-          'https://i.pravatar.cc/40?u=70629df2-571a-4899-b36a-8f36c909508a',
+        imageUrl: `https://i.pravatar.cc/40?u=${PLAYER_ID}`,
       };
 
       if (config.method === 'PATCH') {

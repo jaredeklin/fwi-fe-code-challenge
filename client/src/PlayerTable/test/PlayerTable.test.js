@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, screen, waitFor } from '../../utils/test/test-utils';
+import { render, screen, waitFor, act } from '../../utils/test/test-utils';
 import userEvent from '@testing-library/user-event';
 import App from '../../App';
 
@@ -29,7 +29,18 @@ describe('Player Table', () => {
     userEvent.click(screen.getByTestId('player-add-button'));
 
     expect(screen.getByTestId('player-form-name')).toBeInTheDocument();
-    userEvent.click(screen.getByTestId('player-form-cancel'));
+
+    act(() => {
+      userEvent.click(screen.getByTestId('player-form-cancel'));
+    });
+
+    await waitFor(() => {
+      expect(
+        screen.getByTestId(
+          'player-table-row-1547cbe1-e06a-417e-97dc-ce1de248d4e9'
+        )
+      ).toBeInTheDocument();
+    });
   });
 
   test('click on a player should redirect to update player form', async () => {
