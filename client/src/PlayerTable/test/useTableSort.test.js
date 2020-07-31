@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useTableSort } from '../useTableSort';
+
 describe('useTableSort()', () => {
   test('should update the sort values', () => {
     const { result } = renderHook(() => useTableSort());
