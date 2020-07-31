@@ -12,6 +12,7 @@ const TableBody = ({ players }) => {
   return (
     <table
       id="player-table-body"
+      data-testid="player-table-body"
       role="presentation"
       className="table table--body"
     >
@@ -21,6 +22,7 @@ const TableBody = ({ players }) => {
             key={id}
             role="row"
             className="table__row"
+            data-testid={`player-table-row-${id}`}
             onClick={() =>
               push('player', { id, name, country, winnings, imageUrl })
             }

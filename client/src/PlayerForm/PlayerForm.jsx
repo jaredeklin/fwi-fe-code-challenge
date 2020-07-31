@@ -35,14 +35,24 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
         <Form className="player-form">
           <h2>{text}</h2>
           <label htmlFor="name">Name:</label>
-          <Field className="player-form__input" type="text" name="name" />
+          <Field
+            className="player-form__input"
+            type="text"
+            name="name"
+            data-testid="player-form-name"
+          />
           <ErrorMessage
             name="name"
             component="span"
             className="player-form__error"
           />
           <label htmlFor="country">Country:</label>
-          <Field as="select" className="player-form__input" name="country">
+          <Field
+            as="select"
+            className="player-form__input"
+            name="country"
+            data-testid="player-form-select"
+          >
             <CountriesList />
           </Field>
           <ErrorMessage
@@ -51,7 +61,12 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
             className="player-form__error"
           />
           <label htmlFor="winnings">Winnings:</label>
-          <Field className="player-form__input" type="number" name="winnings" />
+          <Field
+            className="player-form__input"
+            type="number"
+            name="winnings"
+            data-testid="player-form-winnings"
+          />
           <ErrorMessage
             name="winnings"
             component="span"
@@ -60,7 +75,11 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
           <label htmlFor="imageUrl">Image Url:</label>
           <Field className="player-form__input" type="text" name="imageUrl" />
           <div className="player-form__buttons">
-            <button type="button" onClick={() => push('/')}>
+            <button
+              type="button"
+              onClick={() => push('/')}
+              data-testid="player-form-cancel"
+            >
               Cancel
             </button>
             {onDelete && (
@@ -72,7 +91,11 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
                 Delete
               </button>
             )}
-            <button type="submit" className="player-form__button">
+            <button
+              type="submit"
+              className="player-form__button"
+              data-testid="player-form-submit"
+            >
               Submit
             </button>
           </div>
