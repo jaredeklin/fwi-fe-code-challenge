@@ -1,5 +1,6 @@
 export const ASC = 'asc';
 export const DESC = 'desc';
+export const DEFAULT_QUERY_SIZE = 15;
 
 export const COUNTRIES = {
   BD: 'Bangladesh',
