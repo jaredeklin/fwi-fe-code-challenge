@@ -59,7 +59,7 @@ const PlayerTable = (sort) => {
     >
       <TableHeader {...sort} setPage={pagination.setPage} />
       <TableBody players={players} />
-      <TableFooter {...pagination} />
+      {players.length > 0 && <TableFooter {...pagination} />}
     </div>
   );
 };
