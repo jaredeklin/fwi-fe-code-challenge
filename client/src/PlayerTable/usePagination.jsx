@@ -21,7 +21,7 @@ export const usePagination = () => {
   const setTotal = (total) =>
     dispatch({ total, totalPages: Math.ceil(total / size) });
 
-  const setPage = (page) => dispatch({ page, from: size * (page - 1) + 1 });
+  const setPage = (page) => dispatch({ page, from: size * (page - 1) });
 
   return { setTotal, setPage, ...state };
 };

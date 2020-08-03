@@ -1,33 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Button } from '@react-md/button';
+import { Text } from '@react-md/typography';
+
 const TableFooter = ({ page, setPage, totalPages }) => (
   <div className="table__footer">
-    <button type="button" disabled={page === 1} onClick={() => setPage(1)}>
+    <Button
+      theme="primary"
+      themeType="contained"
+      disabled={page === 1}
+      onClick={() => setPage(1)}
+      disableRipple
+    >
       First
-    </button>
-    <button
-      type="button"
+    </Button>
+    <Button
+      theme="primary"
+      themeType="contained"
       disabled={page === 1}
       onClick={() => setPage(page - 1)}
+      disableRipple
     >
       Previous
-    </button>
-    <span>{page}</span>
-    <button
-      type="button"
+    </Button>
+    <Text type="headline-6" color="theme-primary">
+      Page: {page}
+    </Text>
+    <Button
+      theme="primary"
+      themeType="contained"
       disabled={page === totalPages}
       onClick={() => setPage(page + 1)}
+      disableRipple
     >
       Next
-    </button>
-    <button
-      type="button"
+    </Button>
+    <Button
+      theme="primary"
+      themeType="contained"
       disabled={page === totalPages}
       onClick={() => setPage(totalPages)}
+      disableRipple
     >
       Last
-    </button>
+    </Button>
   </div>
 );
 

@@ -51,18 +51,26 @@ $header-height: 2.5rem;
     &:hover {
       cursor: pointer;
     }
+
+    .player-add-icon {
+      display: block;
+      color: $sleeping-panther;
+    }
   }
 
   &__footer {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin: 1rem;
+    height: 2rem;
 
     button {
       margin: 0 0.25rem;
-      &:hover {
-        cursor: pointer;
-      }
+    }
+
+    h6 {
+      margin: 0 1rem;
     }
   }
 

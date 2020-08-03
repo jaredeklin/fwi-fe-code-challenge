@@ -29,15 +29,16 @@ describe('PlayerForm', () => {
       country: 'US',
       imageUrl: '',
       name: 'jared',
-      winnings: 0,
+      winnings: 33,
     };
 
     userEvent.type(screen.getByTestId('player-form-name'), 'jared');
     userEvent.selectOptions(screen.getByTestId('player-form-select'), 'US');
+    userEvent.type(screen.getByTestId('player-form-winnings'), '33');
 
     expect(screen.getByTestId('player-form-name')).toHaveValue('jared');
     expect(screen.getByTestId('player-form-select')).toHaveValue('US');
-    expect(screen.getByTestId('player-form-winnings')).toHaveValue(0);
+    expect(screen.getByTestId('player-form-winnings')).toHaveValue(33);
 
     userEvent.click(screen.getByTestId('player-form-submit'));
     await waitFor(() => {

@@ -1,5 +1,7 @@
 /// @group color-palette
 
+@import '~@react-md/theme/dist/mixins';
+
 // greyscale palette from dark to light
 $sleeping-panther: #000;
 $charcoal: #2e3943;
@@ -20,3 +22,6 @@ $grape: #a14ac2;
 $merlot: #b74780;
 $sunset: #f364ba;
 $palisade: #ff7979;
+
+$rmd-theme-primary: $charcoal;
+$rmd-theme-on-primary: $snow;

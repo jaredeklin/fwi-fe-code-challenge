@@ -30,7 +30,7 @@ describe('usePagination()', () => {
 
       waitFor(() => {
         expect(result.current.page).toBe(5);
-        expect(result.current.from).toBe(61);
+        expect(result.current.from).toBe(60);
       });
     });
   });
