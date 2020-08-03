@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { FontIcon } from '@react-md/icon';
+
 import { DESC } from '../constants';
 
 const NAME = 'name';
@@ -32,7 +34,7 @@ const TableHeader = ({ changeSort, setPage, ...sort }) => {
         <tr role="row">
           <th role="columnheader" className="table__header table__avatar">
             <Link to="add-player" data-testid="player-add-button">
-              +
+              <FontIcon className="player-add-icon">add</FontIcon>
             </Link>
           </th>
           <th

@@ -51,6 +51,11 @@ $header-height: 2.5rem;
     &:hover {
       cursor: pointer;
     }
+
+    .player-add-icon {
+      display: block;
+      color: $sleeping-panther;
+    }
   }
 
   &__footer {
