@@ -18,7 +18,7 @@ const sortedByName = Object.keys(COUNTRIES)
 
 const CountriesList = () => (
   <>
-    <option value="">--Please choose a country--</option>
+    <option key="label" value="" disabled hidden />
     {sortedByName.map(({ countryCode, name }) => (
       <option key={countryCode} value={countryCode}>
         {name}

@@ -1,12 +1,16 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { string, object, number } from 'yup';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import CountriesList from './CountriesList';
-import './PlayerForm.scss';
+import { Button } from '@react-md/button';
+import { Text } from '@react-md/typography';
+
 import { COUNTRIES } from '../constants';
+import FormikTextField from './FormikTextField';
+import FormikSelect from './FormikSelect';
+import './PlayerForm.scss';
 
 const playerSchema = object().shape({
   name: string().required('*Name must be at least one character'),
@@ -18,7 +22,7 @@ const playerSchema = object().shape({
 const defaultState = {
   name: '',
   country: '',
-  winnings: 0,
+  winnings: '',
   imageUrl: '',
 };
 
@@ -33,71 +37,70 @@ const PlayerForm = ({ text, initialValues, onSubmit, onDelete }) => {
     >
       <div className="player-form-container">
         <Form className="player-form">
-          <h2>{text}</h2>
-          <label htmlFor="name">Name:</label>
-          <Field
-            className="player-form__input"
-            type="text"
+          <Text type="headline-4" color="theme-primary">
+            {text}
+          </Text>
+          <FormikTextField
             name="name"
             data-testid="player-form-name"
-          />
-          <ErrorMessage
-            name="name"
-            component="span"
-            className="player-form__error"
-          />
-          <label htmlFor="country">Country:</label>
-          <Field
-            as="select"
+            id="name"
+            label="Name"
             className="player-form__input"
+          />
+          <FormikSelect
+            id="countries"
             name="country"
             data-testid="player-form-select"
-          >
-            <CountriesList />
-          </Field>
-          <ErrorMessage
-            name="country"
-            component="span"
-            className="player-form__error"
-          />
-          <label htmlFor="winnings">Winnings:</label>
-          <Field
+            label="Country"
             className="player-form__input"
+          />
+          <FormikTextField
             type="number"
             name="winnings"
             data-testid="player-form-winnings"
+            id="winnings"
+            label="Winnings"
+            className="player-form__input"
           />
-          <ErrorMessage
-            name="winnings"
-            component="span"
-            className="player-form__error"
+          <FormikTextField
+            type="url"
+            name="imageUrl"
+            data-testid="player-form-url"
+            id="imageUrl"
+            label="Image Url"
+            className="player-form__input"
           />
-          <label htmlFor="imageUrl">Image Url:</label>
-          <Field className="player-form__input" type="text" name="imageUrl" />
           <div className="player-form__buttons">
-            <button
-              type="button"
+            <Button
               onClick={() => push('/')}
               data-testid="player-form-cancel"
+              theme="primary"
+              disableRipple={true}
             >
               Cancel
-            </button>
+            </Button>
             {onDelete && (
-              <button
+              <Button
                 type="button"
                 className="player-form__button"
+                theme="primary"
+                themeType="contained"
+                disableRipple={true}
                 onClick={() => onDelete(initialValues.id)}
               >
                 Delete
-              </button>
+              </Button>
             )}
-            <button
+            <Button
               type="submit"
               className="player-form__button"
               data-testid="player-form-submit"
+              theme="primary"
+              themeType="contained"
+              disableRipple={true}
             >
               Submit
-            </button>
+            </Button>
           </div>
         </Form>
       </div>
