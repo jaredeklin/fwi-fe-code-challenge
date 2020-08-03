@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import URI from 'urijs';
 import PropTypes from 'prop-types';
@@ -17,19 +17,21 @@ const getPlayers = (state) => state.playerIds.map((id) => state.players[id]);
 const PlayerTable = (sort) => {
   const { sortBy, sortOrder } = sort;
   const dispatch = useDispatch();
-  const { setTotal, total, size, from, ...pagination } = usePagination();
+  const { setTotal, size, from, ...pagination } = usePagination();
+  const totalRef = useRef(null);
 
   const url = URI(BASE_URL)
     .addSearch({ sortBy, sortOrder, size, from })
     .toString();
 
   const updateTotal = (count) => {
-    if (count !== total) {
+    if (count !== totalRef.current) {
       setTotal(count);
+      totalRef.current = count;
     }
   };
 
-  const updateTotalCount = React.useCallback(updateTotal, [total]);
+  const updateTotalCount = React.useCallback(updateTotal, [totalRef.current]);
 
   useEffect(() => {
     (async function fetchPlayers() {
