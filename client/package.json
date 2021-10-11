@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^10.4.7",
     "@testing-library/react-hooks": "^3.4.1",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/user-event": "^13.3.0",
     "formik": "^2.1.5",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
