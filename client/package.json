@@ -19,7 +19,7 @@
     "react-world-flags": "^1.4.0",
     "redux": "^4.0.5",
     "shallowequal": "^1.1.0",
-    "urijs": "^1.19.2",
+    "urijs": "^1.19.10",
     "yup": "^0.29.2"
   },
   "devDependencies": {
